@@ -14,6 +14,9 @@
 		D1E1CD7C1C112D6800DA79BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1E1CD7A1C112D6800DA79BB /* LaunchScreen.storyboard */; };
 		D1E1CD871C112D6800DA79BB /* Family_SelectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1CD861C112D6800DA79BB /* Family_SelectorTests.swift */; };
 		D1E1CD921C112D6800DA79BB /* Family_SelectorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1CD911C112D6800DA79BB /* Family_SelectorUITests.swift */; };
+		D1E1CDA01C1130E500DA79BB /* ic_add_circle_white_48pt.imageset in Resources */ = {isa = PBXBuildFile; fileRef = D1E1CD9F1C1130E500DA79BB /* ic_add_circle_white_48pt.imageset */; };
+		D1E1CDA21C11319300DA79BB /* ic_dehaze_white_48dp in Resources */ = {isa = PBXBuildFile; fileRef = D1E1CDA11C11319300DA79BB /* ic_dehaze_white_48dp */; };
+		D1E1CDA51C119ED500DA79BB /* BundleResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E1CDA41C119ED500DA79BB /* BundleResources.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		D1E1CD8D1C112D6800DA79BB /* Family SelectorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Family SelectorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1E1CD911C112D6800DA79BB /* Family_SelectorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Family_SelectorUITests.swift; sourceTree = "<group>"; };
 		D1E1CD931C112D6800DA79BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D1E1CD9F1C1130E500DA79BB /* ic_add_circle_white_48pt.imageset */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ic_add_circle_white_48pt.imageset; path = ../../../Downloads/ic_add_circle_white_48dp/ios/ic_add_circle_white_48pt.imageset; sourceTree = "<group>"; };
+		D1E1CDA11C11319300DA79BB /* ic_dehaze_white_48dp */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ic_dehaze_white_48dp; path = ../../../Downloads/ic_dehaze_white_48dp; sourceTree = "<group>"; };
+		D1E1CDA41C119ED500DA79BB /* BundleResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleResources.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +103,14 @@
 		D1E1CD701C112D6700DA79BB /* Family Selector */ = {
 			isa = PBXGroup;
 			children = (
+				D1E1CDA31C1131AD00DA79BB /* Icons */,
 				D1E1CD711C112D6700DA79BB /* AppDelegate.swift */,
 				D1E1CD731C112D6700DA79BB /* ViewController.swift */,
 				D1E1CD751C112D6700DA79BB /* Main.storyboard */,
 				D1E1CD781C112D6800DA79BB /* Assets.xcassets */,
 				D1E1CD7A1C112D6800DA79BB /* LaunchScreen.storyboard */,
 				D1E1CD7D1C112D6800DA79BB /* Info.plist */,
+				D1E1CDA41C119ED500DA79BB /* BundleResources.swift */,
 			);
 			path = "Family Selector";
 			sourceTree = "<group>";
@@ -123,6 +131,15 @@
 				D1E1CD931C112D6800DA79BB /* Info.plist */,
 			);
 			path = "Family SelectorUITests";
+			sourceTree = "<group>";
+		};
+		D1E1CDA31C1131AD00DA79BB /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				D1E1CDA11C11319300DA79BB /* ic_dehaze_white_48dp */,
+				D1E1CD9F1C1130E500DA79BB /* ic_add_circle_white_48pt.imageset */,
+			);
+			name = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +210,7 @@
 				TargetAttributes = {
 					D1E1CD6D1C112D6700DA79BB = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 5JQEU8EDH8;
 					};
 					D1E1CD811C112D6800DA79BB = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -230,7 +248,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D1E1CD7C1C112D6800DA79BB /* LaunchScreen.storyboard in Resources */,
+				D1E1CDA21C11319300DA79BB /* ic_dehaze_white_48dp in Resources */,
 				D1E1CD791C112D6800DA79BB /* Assets.xcassets in Resources */,
+				D1E1CDA01C1130E500DA79BB /* ic_add_circle_white_48pt.imageset in Resources */,
 				D1E1CD771C112D6700DA79BB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1E1CDA51C119ED500DA79BB /* BundleResources.swift in Sources */,
 				D1E1CD741C112D6700DA79BB /* ViewController.swift in Sources */,
 				D1E1CD721C112D6700DA79BB /* AppDelegate.swift in Sources */,
 			);
@@ -397,10 +418,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Family Selector/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Povi.Family-Selector";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -408,10 +433,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Family Selector/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Povi.Family-Selector";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -482,6 +511,7 @@
 				D1E1CD981C112D6800DA79BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D1E1CD991C112D6800DA79BB /* Build configuration list for PBXNativeTarget "Family SelectorTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +520,7 @@
 				D1E1CD9B1C112D6800DA79BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D1E1CD9C1C112D6800DA79BB /* Build configuration list for PBXNativeTarget "Family SelectorUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +529,7 @@
 				D1E1CD9E1C112D6800DA79BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
