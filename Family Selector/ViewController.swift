@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     var familyMapScrollerContent = [String : UIView]() // Maps family name to their scroll contentView
     var familyMapScrollerContainer = [String : UIView]() //Maps family name to their scroller container view
     var familyMapTags = [Int : String]() //Maps family name to button tag
+    var familyMapCount = [String : Int]() //Maps family name to number of members
+    var familyMapCountDisplay = [String : UILabel]() //Maps family name to label view displaying number of members
     
     
     @IBOutlet weak var AddFamilyButton: UIBarButtonItem!
@@ -25,6 +27,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         //_scrollview = UIScrollView(frame: CGRectMake(0, 0, 416, 600 ))
         // Do any additional setup after loading the view, typically from a nib.
+    
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,7 +76,7 @@ class ViewController: UIViewController {
     
     var nextFamilyDisplacementHeight = 60
     var famDY = 20
-    var famY = 100
+    var famY = 125
     var buffer = 550
     
     
@@ -81,7 +85,7 @@ class ViewController: UIViewController {
         let newFamilyFrame = UIView(frame: CGRect(x: 20, y: nextFamilyDisplacementHeight, width: 364, height: famY))
             newFamilyFrame.backgroundColor = UIColor.whiteColor()
         
-            let newFamilyInset = UIView(frame: CGRect(x: 0, y: 0, width: 364, height: (famY / 4)))
+            let newFamilyInset = UIView(frame: CGRect(x: 0, y: 0, width: 364, height: (famY / 5)))
         
                 newFamilyInset.backgroundColor = UIColor(red: CGFloat(0.95), green: CGFloat(0.33), blue: CGFloat(0.18), alpha: CGFloat(1))
                 let newFamilyNameLabel = UILabel(frame: CGRect(x: 22, y: 0 , width: 364, height: (famY / 4)))
@@ -89,6 +93,8 @@ class ViewController: UIViewController {
                     newFamilyNameLabel.textColor = UIColor.whiteColor()
                     newFamilyNameLabel.textAlignment = NSTextAlignment.Center
                 newFamilyInset.addSubview(newFamilyNameLabel)
+        
+        newFamilyFrame.addSubview(newFamilyInset)
         
         //width for 5/6 buttons
         let newFamilyScroller = UIScrollView(frame: CGRect(x:0, y: (famY/4), width: 0, height: (famY*3/4)))
@@ -107,18 +113,25 @@ class ViewController: UIViewController {
         
         newFamilyFrame.addSubview(newFamilyScroller)
         
-        let newFamilyAddButton = UIButton(frame:  CGRect(x: 0, y: famY/4, width: 364*1/8, height: famY*3/4) )
+        let newFamilyAddButton = UIButton(frame:  CGRect(x: 0, y: famY/5, width: 364*1/8, height: famY*3/5) )
         newFamilyAddButton.setImage(UIImage(named: "Circle_Add_Dark"), forState: UIControlState.Normal)
         newFamilyAddButton.tag = familyMapTags.count
         familyMapTags[newFamilyAddButton.tag] = name
-        
         newFamilyAddButton.addTarget(self, action: "queryAddFamilyMember:", forControlEvents: UIControlEvents.TouchUpInside)
-        
         newFamilyFrame.addSubview(newFamilyAddButton)
+        
+        
+        familyMapCount[name] = 0
+        let newFamilyMemberCount = UILabel(frame: CGRect(x:5, y: famY*4/5, width: 364, height: famY*1/5))
+            newFamilyMemberCount.text = String(familyMapCount[name]!) + " members"
+            newFamilyMemberCount.font = UIFont(name:"Helvetica-Bold", size:CGFloat(14))
+            familyMapCountDisplay[name] = newFamilyMemberCount
+        newFamilyFrame.addSubview(newFamilyMemberCount)
+        
         
         nextFamilyDisplacementHeight += (famY + famDY)
         
-        newFamilyFrame.addSubview(newFamilyInset)
+        
         return newFamilyFrame
     }
     
@@ -142,6 +155,11 @@ class ViewController: UIViewController {
             let targetFamilyScrollviewContainer = familyMapScrollerContainer[targetFamilyName!]
             let targetFamilyScrollview = familyMapScroller[targetFamilyName!]
             let targetFamilyScrollviewContent = familyMapScrollerContent[targetFamilyName!]
+            let targetFamilyCurrentCount = familyMapCount[targetFamilyName!]
+            let targetFamilyCurrentCountDisplay = familyMapCountDisplay[targetFamilyName!]
+            
+            familyMapCount[targetFamilyName!] = targetFamilyCurrentCount! + 1
+            targetFamilyCurrentCountDisplay?.text = String(targetFamilyCurrentCount! + 1) + " members"
             
             if (targetFamilyScrollview?.frame.size.width >= (targetFamilyScrollviewContainer?.frame.size.width)! * 6/8) {
                 targetFamilyScrollview?.scrollEnabled = true
@@ -151,7 +169,7 @@ class ViewController: UIViewController {
             }
             
             let newMemberIcon = UIImage(named: "Member_Icon")
-            let newMemberIconHolder = UIImageView(frame: CGRect(x: Int(targetFamilyScrollviewContent!.frame.size.width), y: 15, width: 45, height: 45))
+            let newMemberIconHolder = UIImageView(frame: CGRect(x: Int(targetFamilyScrollviewContent!.frame.size.width), y: 9, width: 45, height: 45))
             newMemberIconHolder.image = newMemberIcon
             targetFamilyScrollviewContent!.addSubview(newMemberIconHolder)
             
